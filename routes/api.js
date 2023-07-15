@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
+const middleware = require('../middleware/apisequre');
 const pujorelatble = require('../Api/pujorelatable');
 const path = require("path");
 
@@ -28,7 +29,8 @@ const upload = multer({
 })
 
 
-router.post('/pujorelatble/post',upload.single('image'),pujorelatble.pujorepost);
+router.post('/pujorelatble/post', middleware.adminmiddleware,middleware.sessioncheck,upload.single('image'),pujorelatble.pujorepost);
+router.post('/testing',middleware.adminmiddleware,pujorelatble.pujorepost);
 
 
 

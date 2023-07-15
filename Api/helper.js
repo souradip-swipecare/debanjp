@@ -17,6 +17,19 @@ async otpgenerat(){
        throw err;
     }
 }
+// for session otp
+async sesotp(req,res){
+    try{
+        const otpp = otp.generate(20, { digits: true, specialChars: true, specialChars: false, upperCaseAlphabets: false, lowerCaseAlphabets: true });
+        if (otpp){
+            return otpp;
+        }else{
+            return false
+        }
+    }catch(err){
+        throw err;
+    }
+}
 }
 
 module.exports= new Otpgenerate();

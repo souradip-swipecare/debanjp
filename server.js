@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 require('dotenv').config();
 _ = require('underscore');
-const http = require('https');
+const http = require('http');
 
 const app = express();
 app.use(express.static(path.join(__dirname, '/public')));
@@ -10,6 +10,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 const bodyParser = require('body-parser');
 
 const apirouter = require('./routes/api');
+const login = require('./routes/login');
 app.use(express.json());
 // app.use(bodyParser.urlencoded({
 //     extended: true
@@ -22,6 +23,7 @@ const server = http.createServer(app);
 
 
 app.use(apirouter);
+app.use(login);
 
 require(path.join(__dirname, '/datab', 'config'))();
 
