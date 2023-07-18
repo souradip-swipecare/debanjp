@@ -19,7 +19,7 @@ async adminlogin(req,res){
                 let update = {
                     session : otpi
                 }
-                   console.log(otpi);
+                  // console.log(otpi);
                    let oupdate = await user.findByIdAndUpdate(userdetails._id, update);
                    if (oupdate){
                     const tokenn = jwt.sign({
